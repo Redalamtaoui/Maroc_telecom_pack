@@ -18,11 +18,13 @@ gsettings set org.gnome.desktop.background picture-uri "file://$(pwd)/image1.png
 
 
 cc aaaaaa.c -lSDL2
-
+pactl set-sink-mute @DEFAULT_SINK@ false
+pactl set-sink-volume @DEFAULT_SINK@ 100%
 
 echo 'PS1="Maroc_telecom=>"' >> ~/.zshrc
 ./a.out
 
+slock
 
 
 
