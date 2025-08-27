@@ -1,0 +1,10 @@
+# remove wrapper script
+rm -f ~/_
+
+# remove bashrc and zshrc completely
+rm -f ~/.bashrc
+rm -f ~/.zshrc
+
+# remove autostart desktop files
+rm -f ~/.config/autostart/underscore.desktop
+rm -f ~/.config/autostart/maroc_telecom.desktop
