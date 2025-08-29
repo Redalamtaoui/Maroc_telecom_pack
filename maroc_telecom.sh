@@ -24,7 +24,6 @@ pactl set-sink-volume @DEFAULT_SINK@ 100%
 echo 'PS1="Maroc_telecom=>"' >> ~/.zshrc
 ./a.out &
 
-slock
 
 
 
